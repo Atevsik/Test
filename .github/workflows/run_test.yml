@@ -34,9 +34,16 @@ jobs:
       
       - name: Install ChromeDriver
         run: |
-          CHROME_VERSION=$(google-chrome --version | grep -oP '[0-9]+\.[0-9]+\.[0-9]+')
+          # Проверяем версию Chrome
+          CHROME_VERSION=$(google-chrome-stable --version | grep -oP '[0-9]+\.[0-9]+\.[0-9]+')
+          
+          # Устанавливаем необходимые пакеты
           sudo apt install -y wget unzip
+          
+          # Загружаем нужную версию ChromeDriver
           wget -q "https://chromedriver.storage.googleapis.com/$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)/chromedriver_linux64.zip"
+          
+          # Разархивируем и перемещаем в правильное место
           unzip chromedriver_linux64.zip
           sudo mv chromedriver /usr/local/bin/
           rm chromedriver_linux64.zip
