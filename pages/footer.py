@@ -39,7 +39,7 @@ class Footer:
         wait.until(lambda driver: len(driver.window_handles) > 1)
         new_window = self.browser.window_handles[1]
         self.browser.switch_to.window(new_window)
-        sleep(6) #Долго грузится страница, заморочится, можно избавится от sleep
+        sleep(6) #Долго грузится страница, можно избавится от sleep
         assert self.browser.current_url == 'https://dprofile.ru/only?utm_source=only.digital&utm_medium=referral&utm_campaign=only.digital&utm_referrer=only.digital', "Не правильный Dprofile"
         self.browser.close()
         self.browser.switch_to.window(self.browser.window_handles[0])
