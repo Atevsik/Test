@@ -1,4 +1,4 @@
-name: Run autotests mobile
+name: Run autotests
 
 
 on:
